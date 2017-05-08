@@ -1,0 +1,76 @@
+<script type="text/javascript">
+	
+// Arrays = Python lists
+// Single variable with a numbered list of parts
+
+var student1 = "Daniel";
+var student2 = "Merilee";
+var student3 = "Chris";
+var student4 = "Stephen";
+
+var students = [];
+students = ["Daniel", "Merilee", "Chris", "Stephen"];
+console.log(students);
+console.log(students.length); //length is a property
+
+// Like Python and pretty much every other language, the first index is 0.
+// Any data type can go in any index.
+// -booleans
+// -strings
+// -numbers (floats and integers)
+// -objects
+// -array (lists in lists!)
+
+var nfcSouth = [
+	"Falcons",
+	"Panthers",
+	"Saints",
+	"Bucs"
+]
+
+console.log(nfcSouth[0]); // Would print Falcons
+console.log(nfcSouth[4]); // Will print undefined, even if out of range
+
+// Append = PUSH
+nfcSouth.push("Cowboys");
+console.log(nfcSouth);
+nfcSouth.pop(); // POP will remove the last element
+console.log(nfcSouth);
+
+// SLICE gets you a copy (DOES NOT CHANGE ORIGINAL) array from x to y (y not included)
+console.log(nfcSouth.slice(1,3)); // This will print the 1th and the 2th index
+console.log(nfcSouth.slice(-2,-1)); // This will start at the end and print Saints only
+
+// SPLICE will actually remove or add stuff and give a completely new array
+// Splice allows you to add and remove elements in an array at ay index.
+// arg 1 = where to start
+// arg 2 = how many to delete
+// arg 3 = what to insert at arg 1
+nfcSouth.splice(1,0,"Cowboys"); // This will insert the Cowboys at the 1th element
+console.log(nfcSouth);
+nfcSouth.splice(1,1,"Cowboys"); // This would remove the 1th element and replace it with Cowboys
+
+var atlTeams = [
+	"Falcons",
+	"Braves",
+	"Hawks",
+	"Thrashers"
+]
+
+var newTeam = prompt("Please enter the new team in town.");
+// atlTeams.pop();
+// atlTeams.push(newTeam);
+atlTeams.splice(-1,1,newTeam); // This will remove the one element from the end (removed Thrashers)
+console.log(atlTeams);
+
+if(atlTeams[-1] == "Atl United"){
+	console.log("Correct team added!");
+}
+
+// 99 bottles of beer on the wall...
+// Loop
+
+
+
+
+</script>

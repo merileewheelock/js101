@@ -1,0 +1,93 @@
+<script type="text/javascript">
+	
+// 1.Given a number between 0 and 6 representing the days of the week, print "Go to work." if it's a work day and "Sleep in." if it's a weekend day. You can set up an array for the days of the week, or for extra credit, you can check out the JS Date object here).
+
+daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+userDay = prompt("What is the day of the week?");
+if (userDay == daysOfWeek[1] || userDay == daysOfWeek[2] || userDay == daysOfWeek[3] || userDay == daysOfWeek[4] || userDay == daysOfWeek[5]){
+	console.log("Go to work.");
+}
+else if (userDay == daysOfWeek[0] || userDay == daysOfWeek[6]){
+	console.log("Sleep in!");
+}
+else{
+	console.log("Please enter a day of the week.");
+}
+
+// Using For Loop
+for(let i = 0; i < weekdays.length; i++){
+	if (userDay == daysOfWeek[i]){
+		console.log("You chose " + weekdays[i]);
+	}
+}
+
+// Using indexOf()
+var dayIndexInArray = weekdays.indexOf(userDay);
+if ((dayIndexInArray == 0) || (dayIndexInArray == 6)){
+	console.log("Sleep in.");
+}
+else if((dayIndexInArray >= 1) && (dayIndexInArray <= 5)){
+	console.log("Go to work.")
+}
+else{
+	console.log("Try again.")
+}
+ 
+// 2. Given a month number, between 1 and 12, and a year, print the number of days in that month - accounting for leap years.
+
+months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+userMonth = prompt("Please enter a month.");
+userYear = prompt("Please enter a year.");
+if (userYear % 4 == 0){
+	if (userMonth == months[1]){
+		console.log("There are 29 days in " + userMonth + " " + userYear);
+	}
+	else if (userMonth == months[0] || userMonth == months[2] || userMonth == months[4] || userMonth == months[6] || userMonth == months[7] || userMonth == months[9] || userMonth == months[11]){
+		console.log("There are 31 days in " + userMonth + " " + userYear);
+	}
+	else{
+		console.log("There are 30 days in " + userMonth + " " + userYear);
+	}
+}
+else{
+	if (userMonth == months[1]){
+		console.log("There are 28 days in " + userMonth + " " + userYear);
+	}
+	else if (userMonth == months[0] || userMonth == months[2] || userMonth == months[4] || userMonth == months[6] || userMonth == months[7] || userMonth == months[9] || userMonth == months[11]){
+		console.log("There are 31 days in " + userMonth + " " + userYear);
+	}
+	else{
+		console.log("There are 30 days in " + userMonth + " " + userYear);
+	}
+}
+
+
+ 
+// 3. Given the amount of a bill as a number, and a level of service - which can be "good", "fair", or "bad", print the total bill with the tip included. The amount of tip given for each level of service is defined by:
+ 
+// "good" -> 20%
+// "fail" -> 15%
+// "bad"  -> 10%
+ 
+// Extra: Add to "Tip Calculator"...you are also given the number of people to divide the total into. Print the amount for each person to pay.
+
+billAmount = prompt("How much was the bill?")
+serviceLevel = prompt("What was the level of service? (good, fair, poor)")
+if (serviceLevel == "good"){
+	total = parseInt(billAmount) + (billAmount * .20)
+	console.log("Your total bill is $" + total)
+}
+else if (serviceLevel == "fair"){
+	total = parseInt(billAmount) + (billAmount * .15)
+	console.log("Your total bill is $" + total)
+}
+else if (serviceLevel == "poor"){
+	total = parseInt(billAmount) + (billAmount * .10)
+	console.log("Your total bill is $" + total)
+}
+else{
+	console.log("Please enter a level of service.")
+}
+
+
+</script>
