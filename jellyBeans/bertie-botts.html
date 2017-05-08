@@ -13,6 +13,10 @@
 		font-family: 'Ravi Prakash', cursive;
 		font-size: 32px;
 	}
+
+	.more-space{
+		margin-bottom: 20px;
+	}
 	
 		
 	</style>
@@ -21,11 +25,16 @@
 
 <div id="game-wrapper">
 	<div class="text-center"><img src="jelly-beans.jpg" name="jellyBeans" /></div>
-	<div id="message" class="text-center">You have encountered a bowl of Bertie Bott's Every Flavour Beans! Do you eat one?</div>
-	<div class="text-center">
-		<button class="btn btn-defult" onclick="rollDice();">Eat!</button>
+	<div id="message" class="text-center more-space">
+		<p>You have encountered a bowl of Bertie Bott's Every Flavour Beans! Do you eat one?</p>
+		<p>You must roll a 6 or higher for a good flavor!</p>
+		<p>At 11 years old, your stomach can only handle so much. 10 bad jelly beans will land you in the hospital wing...</p>
 	</div>
-	<div class="text-center">
+	<div class="text-center more-space">
+		<button class="btn btn-defult btn-lg btn-success" onclick="rollDice();">Eat!</button>
+		<button class="btn btn-defult btn-lg btn-danger" onclick="quit();">I'd rather not risk it.</button>
+	</div>
+	<div class="text-center more-space">
 		<img src="d1.png" name="die1Image"/>
 		<img src="d1.png" name="die2Image"/>
 	</div>
@@ -50,12 +59,18 @@
 
 		if (randomDie1 + randomDie2 > 6){
 			document.images.jellyBeans.src = "https://media.giphy.com/media/QtW3plHlpE640/giphy.gif";
-			document.getElementById("message").innerHTML = "Mmm very cherry!";
+			document.getElementById("message").innerHTML = "Mmm very cherry! Health: " + health;
 		}
 		else{
 			document.images.jellyBeans.src = "http://cdn.playbuzz.com/cdn/e5a099c4-9d42-4233-83c2-9884ca3b90d9/e6bbb67c-77de-4350-9e00-a4b7e05fea14.gif";
-			document.getElementById("message").innerHTML = "It was vomit.";
+			document.getElementById("message").innerHTML = "Alas... earwax! Health: " + health;
+			health--;
 		}
+	}
+
+	function quit(){
+		document.images.jellyBeans.src = "http://31.media.tumblr.com/757d2b2fe486ff6155e75466fabfb0fd/tumblr_nf0dl84kbi1soigzso1_500.gif";
+		document.getElementById("message").innerHTML = "I'm afraid of fun.";
 	}
 
 
