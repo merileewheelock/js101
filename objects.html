@@ -1,0 +1,75 @@
+<script type="text/javascript">
+	
+// JSON = JavaScript Object Notation
+
+// This is an empty array. square brackets = array
+var students = [];
+
+// This is an empty object. curly braces = object
+var student = {};
+
+// Objects have properties (or keys)
+// console.log(student.name);
+student.name = "Hayes"; // . indicates name is a property of the student object
+// console.log(students.name);
+student.age = 27;
+console.log(student); // With properties added
+
+student2 = {
+	name: "Stephen",		// property: value (separated by comma)
+	profession: "Student",
+	language: "JavaScript"
+}
+
+student3 = {
+	name: "Drew",
+	friends: [
+		"YingRong",			// items in array separated by comma
+		"Carla",
+		"Daniel"
+	],
+	sayHello: function(nameOfFriend){
+		console.log("Hello, " + nameOfFriend);
+	},
+	addFriend: function(nameOfFriend){ // Can reuse variable names since they are local variables to each function
+		// console.log(this); 
+		// this is JS is like self in Python. this is always the Window
+		this.friends.push(nameOfFriend);
+	}
+}
+
+// This also does the same thing as the addFriend property above
+// funcion addFriend(object, nameOfFriend){
+// 	object.friends.push(nameOfFriend);
+// }
+
+console.log(student3); // This will print everything about Drew
+console.log(student3.friends[1]); // This will print Carla
+student3.sayHello("Chad"); // This will produce the sayHello value function from student3's list
+student3.sayHello(student3.friends[0]);
+student3.addFriend("Shane"); // Same as student3.friends.push("Shane")
+console.log(student3.friends); // This will not print the list including Shane
+
+// The below two do the same thing, but the first is the object oriented approach and the second is a procedural approach
+student3.addFriend("Shane");
+student3.friends.push("Shane");
+
+// addFriend(student3, "Shane")
+
+
+var propName = "friends";
+console.log(student3[propName]); // This will fetch "friends" and drop it into [propName] as .friends
+// Use [] when trying to reference a property in a dictionary
+console.log(student3["friends"]); // This is the same as [propName] but not how JS is written
+
+students = [];
+students.push(student);
+students.push(student2);
+students.push(student3);
+console.log(students);
+
+console.log(students[2].name); // This will print Drew since he has a name property
+console.log(students[2].friends[2]); // This will print Carla
+students[2].sayHello("friend");
+
+</script>
