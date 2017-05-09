@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Bertie Botts!</title>
+	<title>Bertie Bott's!</title>
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -15,7 +15,22 @@
 	}
 
 	.more-space{
-		margin-bottom: 20px;
+		margin-top: 20px;
+	}
+
+	.message-area{
+		margin-top: 50px;
+		background-color: #5A367E;
+		color: #EDB558;
+		height: 400px;
+		width: 500px;
+	}
+
+	.button-area{
+		margin-top: 50px;
+		background-color: #EDB558;
+		height: 400px;
+		width: 500px;
 	}
 	
 		
@@ -23,20 +38,35 @@
 </head>
 <body>
 
-<div id="game-wrapper">
-	<div class="text-center"><img src="jelly-beans.jpg" name="jellyBeans" /></div>
-	<div id="message" class="text-center more-space">
-		<p>You have encountered a bowl of Bertie Bott's Every Flavour Beans! Do you eat one?</p>
-		<p>You must roll a 6 or higher for a good flavor!</p>
-		<p>At 11 years old, your stomach can only handle so much. 10 bad jelly beans will land you in the hospital wing...</p>
+<div class="container-fluid" id="game-wrapper">
+	<div class="row">
+		<div class="text-center more-space">
+			<img src="jelly-beans.jpg" name="jellyBeans" />
+		</div>
 	</div>
-	<div class="text-center more-space">
-		<button class="btn btn-defult btn-lg btn-success" onclick="rollDice();">Eat!</button>
-		<button class="btn btn-defult btn-lg btn-danger" onclick="quit();">I'd rather not risk it.</button>
+
+	<div class="row message-area col-md-offset-2 col-md-3">
+		<div id="message" class="text-center more-space">
+			<p>You have encountered a bowl of Bertie Bott's Every Flavour Beans! Do you eat one?</p>
+			<p>You must roll a 8 or higher for a good flavor!</p>
+			<p>10 bad jelly beans will land you in the hospital wing...</p>
+		</div>
 	</div>
-	<div class="text-center more-space">
-		<img src="d1.png" name="die1Image"/>
-		<img src="d1.png" name="die2Image"/>
+
+	<div class="row button-area col-md-offset-1 col-md-4">
+		<div class="text-center more-space">
+			<button class="btn btn-defult btn-lg btn-success" onclick="rollDice();">Bean me!</button>
+		</div>
+		<div class="text-center more-space">
+			<button class="btn btn-defult btn-lg btn-info" onclick="drinkHealth();">Drink health potion</button>
+		</div>
+		<div class="text-center more-space">
+			<button class="btn btn-defult btn-lg btn-danger" onclick="quit();">I'd rather not risk it.</button>
+		</div>
+		<div class="text-center more-space">
+			<img src="d1.png" name="die1Image"/>
+			<img src="d1.png" name="die2Image"/>
+		</div>
 	</div>
 </div>
 
@@ -44,27 +74,26 @@
 <script type="text/javascript">
 
 	var health = 10;
+
+	var goodBeans = [Banana, Blueberry, Candyfloss, Cherry, Cinnamon, Green Apple, Marshmallow, Lemon, Tutti-Fruitti, Watermelon];
+	var badBeans = [Black Pepper, Booger, Dirt, Earthworm, Earwax, Grass, Rotten Egg, Sausage, Soap, Vomit];
 	
 	function rollDice(){
-		// console.log("The user clicked the Fight button.");
-		// Get a random number between 1 and 6
 		var randomDie1 = Math.ceil(Math.random() * 6);
 		var randomDie2 = Math.ceil(Math.random() * 6);
-		// console.log(randomDie1);
-		// console.log(randomDie2);
-		var die1 = "d" + randomDie1 + ".png"; // These are forming the file names
+		var die1 = "d" + randomDie1 + ".png";
 		var die2 = "d" + randomDie2 + ".png";
-		document.images.die1Image.src = die1; // This is writing the die1Image to the document (HTML in browser)
+		document.images.die1Image.src = die1;
 		document.images.die2Image.src = die2;
 
-		if (randomDie1 + randomDie2 > 6){
+		if (randomDie1 + randomDie2 >= 8){
 			document.images.jellyBeans.src = "https://media.giphy.com/media/QtW3plHlpE640/giphy.gif";
-			document.getElementById("message").innerHTML = "Mmm very cherry! Health: " + health;
+			document.getElementById("message").innerHTML = "Mmm very cherry! -- Health: " + health;
 		}
 		else{
-			document.images.jellyBeans.src = "http://cdn.playbuzz.com/cdn/e5a099c4-9d42-4233-83c2-9884ca3b90d9/e6bbb67c-77de-4350-9e00-a4b7e05fea14.gif";
-			document.getElementById("message").innerHTML = "Alas... earwax! Health: " + health;
 			health--;
+			document.images.jellyBeans.src = "http://cdn.playbuzz.com/cdn/e5a099c4-9d42-4233-83c2-9884ca3b90d9/e6bbb67c-77de-4350-9e00-a4b7e05fea14.gif";
+			document.getElementById("message").innerHTML = "Alas... earwax! -- Health: " + health;
 		}
 	}
 
@@ -73,7 +102,11 @@
 		document.getElementById("message").innerHTML = "I'm afraid of fun.";
 	}
 
-
+	function drinkHealth(){
+		health = 10;
+		document.images.jellyBeans.src = "https://media.giphy.com/media/kErFkM1pLbeta/giphy.gif";
+		document.getElementById("message").innerHTML = "To your health! -- Health: " + health;
+	}
 
 </script>
 
