@@ -1,0 +1,55 @@
+<!-- Scope
+-Determines what can see a variable
+1. Global: Top level, EVERYONE can see and change a global
+     -In Python, these are indented all the way to the left
+2. Local: Inside of a function, only visible internally and to child functions -->
+
+<script type="text/javascript">
+	
+	var imAGlobal = 1;
+	// This is a global variable. It belongs to the WINDOW object.
+	function checkScope(){
+		var imAGlobal = 2;
+		// In spite of the misleading name, this is a local variable. It is NOT visible outside (above) this function
+		console.log("Local var", imAGlobal); // This will print 2
+		// Unless you have specific reason to do this, avoid the below
+		// Putting window. in front of anything will access the global scope. We can still access the global variable even though we have a local variable with the same name, but we have to tell it we want the global copy
+		console.log("Global var", window.imAGlobal); // This will print 1 (using the global value - window's copy)
+
+		function child(){
+			imAGlobal = 3;
+			// If we wrote "var imAGlobal = 3" here, it would be a NEW variable that dies after we're outside of child()
+			console.log("Inside of child", imAGlobal);
+		}
+		child();
+		console.log("After child", imAGlobal);
+	}
+	checkScope();
+
+
+// HOISTING
+// Put your vars at the top od a function, or JS will do it for you
+
+	// Global copy of x
+	var x = 1;
+	function hoistingTest(){
+		// Based on scope, hoisingText can see the global x
+		console.log(x);
+		// Local copy of x
+		var x = 2;
+		// Because of hoisting, JS moves ALL vars up to the top of a function/scope/global immediately (without their value)
+		//In the above order, line 37 will return undefined
+
+		// JS changes to:
+		var x;
+		console.log(x);
+		x = 2;
+		// Just put all your variables at the top of a function
+
+		y = 3
+	}
+	hoistingTest();
+	console.log(y); // This will return 3. It it cannot find "var y" anywhere, it will assign y as a global variable. The child function looks up level after level for a var. If it never finds one, it adds the var to the global scope. AVOID THIS by always using var to declare.
+
+
+</script>
